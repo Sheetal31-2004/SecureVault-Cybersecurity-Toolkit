@@ -1,0 +1,277 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- FIRST ROW -->
+
+<div class="row g-4">
+
+    <!-- Network -->
+
+    <div class="col-lg-4">
+
+        <div class="service-card">
+
+            <div class="service-card-inner">
+
+                <div class="service-front">
+                    <img src="/static/css/images/network.png"
+                         class="service-img">
+                </div>
+
+                <div class="service-back">
+
+                    <h3>🌐 Network Scanner</h3>
+
+                    <p>
+                        Scan target systems and identify open ports.
+                    </p>
+
+                    <a href="/scan"
+                       class="btn btn-primary">
+                        Launch
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- File -->
+
+    <div class="col-lg-4">
+
+        <div class="service-card">
+
+            <div class="service-card-inner">
+
+                <div class="service-front">
+                    <img src="/static/css/images/file.png"
+                         class="service-img">
+                </div>
+
+                <div class="service-back">
+
+                    <h3>📁 File Scanner</h3>
+
+                    <p>
+                        Upload and inspect files for suspicious activity.
+                    </p>
+
+                    <a href="/file-scan"
+                       class="btn btn-info">
+                        Scan File
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Encryption -->
+
+    <div class="col-lg-4">
+
+        <div class="service-card">
+
+            <div class="service-card-inner">
+
+                <div class="service-front">
+                    <img src="/static/css/images/encryption.png"
+                         class="service-img">
+                </div>
+
+                <div class="service-back">
+
+                    <h3>🔒 Encryption</h3>
+
+                    <p>
+                        Protect your sensitive information.
+                    </p>
+
+                    <a href="{{ url_for('encryption_dashboard') }}"
+                        class="btn btn-success">
+                            Open
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SECOND ROW -->
+
+<div class="row g-4 mt-3">
+
+    <!-- Decryption -->
+
+    <div class="col-md-6">
+
+        <div class="service-card">
+
+            <div class="service-card-inner">
+
+                <div class="service-front">
+                    <img src="/static/css/images/decryption.png"
+                         class="service-img">
+                </div>
+
+                <div class="service-back">
+
+                    <h3>🔓 Decryption</h3>
+
+                    <p>
+                        Recover encrypted data safely.
+                    </p>
+
+                    <a href="{{ url_for('decrypt_dashboard') }}"
+                        class="btn btn-warning">
+                        Decrypt
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Reports -->
+
+    <div class="col-md-6">
+
+        <div class="service-card">
+
+            <div class="service-card-inner">
+
+                <div class="service-front">
+                    <img src="/static/css/images/report.png"
+                         class="service-img">
+                </div>
+
+                <div class="service-back">
+
+                    <h3>📄 Reports</h3>
+
+                    <p>
+                        Generate and download security reports.
+                    </p>
+
+                   <a href="{{ url_for('reports_dashboard') }}"
+                        class="btn btn-danger">
+                        Open
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- RECENT ACTIVITY -->
+
+<div class="cardbox mt-4">
+
+    <h3>Recent Activity</h3>
+
+    <hr>
+
+    <table class="table table-dark table-hover">
+
+        <thead>
+
+            <tr>
+
+                <th>Service</th>
+
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>Network Scanner</td>
+
+                <td>
+                    <span class="badge bg-success">
+                        Ready
+                    </span>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>File Scanner</td>
+
+                <td>
+                    <span class="badge bg-info">
+                        Ready
+                    </span>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Encryption</td>
+
+                <td>
+                    <span class="badge bg-warning">
+                        Ready
+                    </span>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Decryption</td>
+
+                <td>
+                    <span class="badge bg-primary">
+                        Ready
+                    </span>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Reports</td>
+
+                <td>
+                    <span class="badge bg-danger">
+                        Ready
+                    </span>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

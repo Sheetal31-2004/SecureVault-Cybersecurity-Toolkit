@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Decrypt Message</h2>
+<form method="POST">
+    <input type="text" name="encrypted_msg" class="form-control" placeholder="Paste encrypted message" required>
+    <button type="submit" class="btn btn-primary mt-2">Decrypt</button>
+</form>
+{% if decrypted %}
+    <div class="alert alert-info mt-3"><strong>Decrypted:</strong> {{ decrypted }}</div>
+{% endif %}
+{% endblock %}

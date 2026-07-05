@@ -1,0 +1,271 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+<div class="row">
+
+<!-- LEFT -->
+
+<div class="col-lg-8">
+
+<div class="card shadow-lg border-0">
+
+<div class="card-header bg-danger text-white">
+
+<h2>
+
+✍ Digital Signature
+
+</h2>
+
+<small>
+
+RSA-2048 Digital Signature Verification
+
+</small>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST" enctype="multipart/form-data">
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Select File
+
+        </label>
+
+        <input
+            type="file"
+            name="file"
+            class="form-control"
+            required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">
+
+            Signature File (.sig)
+
+        </label>
+
+        <input
+            type="file"
+            name="signature"
+            class="form-control">
+
+    </div>
+
+    <div class="mb-4">
+
+        <label class="form-label">
+
+            Public Key (.pem)
+
+        </label>
+
+        <input
+            type="file"
+            name="public_key"
+            class="form-control">
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <button
+                class="btn btn-success w-100"
+                name="action"
+                value="sign">
+
+                ✍ Generate Signature
+
+            </button>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <button
+                class="btn btn-primary w-100"
+                name="action"
+                value="verify">
+
+                ✔ Verify Signature
+
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="col-lg-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-dark text-white">
+
+Digital Signature Information
+
+</div>
+
+<div class="card-body">
+
+<table class="table">
+
+<tr>
+
+<th>Algorithm</th>
+
+<td>RSA-2048</td>
+
+</tr>
+
+<tr>
+
+<th>Hash</th>
+
+<td>SHA-256</td>
+
+</tr>
+
+<tr>
+
+<th>Key Type</th>
+
+<td>Public / Private</td>
+
+</tr>
+
+<tr>
+
+<th>Security</th>
+
+<td>
+
+<span class="badge bg-success">
+
+HIGH
+
+</span>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="card mt-4">
+
+<div class="card-header bg-warning">
+
+💡 Tips
+
+</div>
+
+<div class="card-body">
+
+✔ Never share your private key.
+
+<hr>
+
+✔ Share only the public key.
+
+<hr>
+
+✔ Verify signatures before trusting files.
+
+<hr>
+
+✔ RSA protects authenticity and integrity.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% if result %}
+
+<div class="card mt-4 shadow border-success">
+
+<div class="card-header bg-success text-white">
+
+<h3>
+
+Result
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+{% if "VALID" in result %}
+
+<div class="alert alert-success">
+
+    <h4>✔ Signature Verified</h4>
+
+    <hr>
+
+    {{ result }}
+
+</div>
+
+{% elif "INVALID" in result %}
+
+<div class="alert alert-danger">
+
+    <h4>❌ Verification Failed</h4>
+
+    <hr>
+
+    {{ result }}
+
+</div>
+
+{% else %}
+
+<div class="alert alert-warning">
+
+    {{ result }}
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

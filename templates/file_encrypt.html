@@ -1,0 +1,375 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+<div class="row">
+
+<!-- ================= LEFT ================= -->
+
+<div class="col-lg-8">
+
+<div class="card shadow-lg border-0">
+
+<div class="card-header bg-primary text-white">
+
+<h2 class="mb-1">
+
+📁 Secure File Encryption
+
+</h2>
+
+<small>
+
+Encrypt files securely using AES-256 (Fernet)
+
+</small>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST" enctype="multipart/form-data">
+
+<div class="mb-4">
+
+<label class="form-label fw-bold">
+
+Choose File
+
+</label>
+
+<input
+
+type="file"
+
+class="form-control"
+
+id="file"
+
+name="file"
+
+required>
+
+</div>
+
+<div class="row text-center mb-4">
+
+<div class="col-md-4">
+
+<div class="card bg-light">
+
+<div class="card-body">
+
+<h6>📄 Filename</h6>
+
+<p id="filename">
+
+No file selected
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card bg-light">
+
+<div class="card-body">
+
+<h6>📏 Size</h6>
+
+<p id="filesize">
+
+0 KB
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card bg-light">
+
+<div class="card-body">
+
+<h6>📂 Type</h6>
+
+<p id="filetype">
+
+Unknown
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<button
+
+class="btn btn-success w-100"
+
+type="submit">
+
+🔒 Encrypt File
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= RIGHT ================= -->
+
+<div class="col-lg-4">
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-dark text-white">
+
+🛡 Encryption Information
+
+</div>
+
+<div class="card-body">
+
+<table class="table">
+
+<tr>
+
+<th>Algorithm</th>
+
+<td>AES-256</td>
+
+</tr>
+
+<tr>
+
+<th>Library</th>
+
+<td>Fernet</td>
+
+</tr>
+
+<tr>
+
+<th>Mode</th>
+
+<td>Symmetric</td>
+
+</tr>
+
+<tr>
+
+<th>Key Size</th>
+
+<td>256-bit</td>
+
+</tr>
+
+<tr>
+
+<th>Security</th>
+
+<td>
+
+<span class="badge bg-success">
+
+HIGH
+
+</span>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="card shadow mt-4 border-0">
+
+<div class="card-header bg-warning">
+
+💡 Security Tips
+
+</div>
+
+<div class="card-body">
+
+✔ Encrypt confidential files before sharing.
+
+<hr>
+
+✔ Never expose your encryption key.
+
+<hr>
+
+✔ Store encrypted files separately.
+
+<hr>
+
+✔ Verify the receiver before sending files.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% if encrypted_file %}
+
+<div class="card shadow-lg border-success mt-4">
+
+<div class="card-header bg-success text-white">
+
+<h3>
+
+🔒 Encryption Completed
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<div class="row text-center">
+
+<div class="col-md-4">
+
+<div class="alert alert-success">
+
+<strong>Status</strong>
+
+<br>
+
+Encrypted Successfully
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="alert alert-primary">
+
+<strong>Algorithm</strong>
+
+<br>
+
+AES-256
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="alert alert-info">
+
+<strong>Security</strong>
+
+<br>
+
+HIGH
+
+</div>
+
+</div>
+
+</div>
+
+<hr>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th>Encrypted File</th>
+
+<td>{{ encrypted_file }}</td>
+
+</tr>
+
+<tr>
+
+<th>Extension</th>
+
+<td>.encrypted</td>
+
+</tr>
+
+<tr>
+
+<th>Encryption</th>
+
+<td>Fernet AES-256</td>
+
+</tr>
+
+</table>
+
+<a
+
+href="{{ url_for('download_file', filename=encrypted_file) }}"
+
+class="btn btn-success">
+
+⬇ Download Encrypted File
+
+</a>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<script>
+
+document.getElementById("file").addEventListener("change",function(){
+
+let file=this.files[0];
+
+if(file){
+
+document.getElementById("filename").innerHTML=file.name;
+
+document.getElementById("filesize").innerHTML=
+
+(file.size/1024).toFixed(2)+" KB";
+
+document.getElementById("filetype").innerHTML=
+
+file.type || "Unknown";
+
+}
+
+});
+
+</script>
+
+{% endblock %}

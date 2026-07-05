@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">📜 Network Scan History</h2>
+
+<!-- Search & Filter -->
+<form method="GET" class="row g-3 mb-4">
+
+    <div class="col-md-5">
+        <input
+            type="text"
+            class="form-control"
+            name="search"
+            placeholder="Search by Target..."
+            value="{{ search }}">
+    </div>
+
+    <div class="col-md-4">
+        <select class="form-control" name="type">
+            <option value="">All Scan Types</option>
+
+            <option value="quick"
+            {% if scan_type=="quick" %}selected{% endif %}>
+            ⚡ Quick Scan
+            </option>
+
+            <option value="full"
+            {% if scan_type=="full" %}selected{% endif %}>
+            🔍 Full Scan
+            </option>
+
+            <option value="web"
+            {% if scan_type=="web" %}selected{% endif %}>
+            🌐 Web Scan
+            </option>
+
+        </select>
+    </div>
+
+    <div class="col-md-3">
+
+        <button class="btn btn-warning w-100">
+
+            🔍 Search
+
+        </button>
+
+    </div>
+
+</form>
+
+<!-- History Table -->
+
+<div class="card bg-dark text-light">
+
+<div class="card-body">
+
+{% if scans %}
+
+<table class="table table-dark table-hover align-middle">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Target</th>
+
+<th>Scan Type</th>
+
+<th>Risk</th>
+
+<th>Date</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for scan in scans %}
+
+<tr>
+
+<td>{{ scan.id }}</td>
+
+<td>{{ scan.target }}</td>
+
+<td>
+
+{% if scan.scan_type=="quick" %}
+<span class="badge bg-success">Quick</span>
+
+{% elif scan.scan_type=="full" %}
+<span class="badge bg-primary">Full</span>
+
+{% else %}
+<span class="badge bg-warning text-dark">Web</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+{% if scan.risk_score=="Low" %}
+<span class="badge bg-success">Low</span>
+
+{% elif scan.risk_score=="Medium" %}
+<span class="badge bg-warning text-dark">Medium</span>
+
+{% else %}
+<span class="badge bg-danger">High</span>
+
+{% endif %}
+
+</td>
+
+<td>{{ scan.scan_date }}</td>
+
+<td>
+
+<a href="/delete-history/{{ scan.id }}"
+class="btn btn-sm btn-danger"
+onclick="return confirm('Delete this scan history?')">
+
+<i class="bi bi-trash"></i>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% else %}
+
+<div class="text-center p-5">
+
+<h4>No Scan History Found</h4>
+
+<p class="text-secondary">
+
+Run your first scan to see results here.
+
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% endblock %}

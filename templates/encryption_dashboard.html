@@ -1,0 +1,207 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+    <!-- Header -->
+
+    <div class="cardbox mb-4 text-center">
+
+        <h2 class="fw-bold">
+            🔐 Encryption Center
+        </h2>
+
+        <p style="color:#d8d8d8;">
+            Secure your messages, files and digital assets using enterprise-grade cryptographic tools.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Message Encryption -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:60px;">💬</div>
+
+                    <h3 class="mt-3">
+                        Message Encryption
+                    </h3>
+
+                    <p style="color:#d8d8d8;">
+                        Encrypt confidential messages using AES-256 (Fernet).
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled">
+
+                    <li>✔ AES-256 Encryption</li>
+                    <li>✔ Copy & Download</li>
+                    <li>✔ Enterprise Security</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('encrypt_route') }}"
+                       class="btn btn-primary px-5">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- File Encryption -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:60px;">📁</div>
+
+                    <h3 class="mt-3">
+                        File Encryption
+                    </h3>
+
+                    <p style="color:#d8d8d8;">
+                        Encrypt documents and files securely using AES-256.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled">
+
+                    <li>✔ Any File Type</li>
+                    <li>✔ Secure File Protection</li>
+                    <li>✔ Download Encrypted File</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('file_encrypt') }}"
+                       class="btn btn-success px-5">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Hash Generator -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:60px;">🔑</div>
+
+                    <h3 class="mt-3">
+                        Hash Generator
+                    </h3>
+
+                    <p style="color:#d8d8d8;">
+                        Generate secure cryptographic hashes for integrity verification.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled">
+
+                    <li>✔ MD5</li>
+                    <li>✔ SHA-1</li>
+                    <li>✔ SHA-256 & SHA-512</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('hash_generator') }}"
+                       class="btn btn-warning px-5">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Digital Signature -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:60px;">✍</div>
+
+                    <h3 class="mt-3">
+                        Digital Signature
+                    </h3>
+
+                    <p style="color:#d8d8d8;">
+                        Sign and verify files using RSA-2048 digital signatures.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled">
+
+                    <li>✔ RSA-2048</li>
+                    <li>✔ SHA-256</li>
+                    <li>✔ Verify Authenticity</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('digital_signature') }}"
+                       class="btn btn-danger px-5">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

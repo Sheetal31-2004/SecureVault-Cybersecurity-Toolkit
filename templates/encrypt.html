@@ -1,0 +1,450 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+    <div class="row">
+
+        <!-- ========================= -->
+        <!-- MESSAGE INPUT -->
+        <!-- ========================= -->
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h2 class="mb-1">
+                        🔐 Secure Message Encryption
+                    </h2>
+
+                    <small>
+                        AES-256 (Fernet) Encryption Engine
+                    </small>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+
+                            <label class="form-label fw-bold">
+
+                                📝 Plain Text
+
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                class="form-control"
+                                rows="8"
+                                placeholder="Type your confidential message here..."
+                                required></textarea>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+
+                            <small id="charCount">
+                                Characters : 0
+                            </small>
+
+                            <small id="wordCount">
+                                Words : 0
+                            </small>
+
+                        </div>
+
+                        <div class="row mt-4">
+
+                            <div class="col-md-6">
+
+                                <button
+                                    class="btn btn-success w-100"
+                                    type="submit">
+
+                                    🔒 Encrypt Message
+
+                                </button>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <button
+                                    type="reset"
+                                    class="btn btn-secondary w-100">
+
+                                    ♻ Clear
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- INFO PANEL -->
+        <!-- ========================= -->
+
+        <div class="col-lg-4">
+
+            <div class="card shadow border-0">
+
+                <div class="card-header bg-dark text-white">
+
+                    🛡 Encryption Information
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table">
+
+                        <tr>
+                            <th>Algorithm</th>
+                            <td>AES-256</td>
+                        </tr>
+
+                        <tr>
+                            <th>Library</th>
+                            <td>Fernet</td>
+                        </tr>
+
+                        <tr>
+                            <th>Mode</th>
+                            <td>Symmetric</td>
+                        </tr>
+
+                        <tr>
+                            <th>Key Size</th>
+                            <td>256-bit</td>
+                        </tr>
+
+                        <tr>
+                            <th>Security</th>
+                            <td>
+
+                                <span class="badge bg-success">
+
+                                    HIGH
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="card shadow mt-4 border-0">
+
+                <div class="card-header bg-warning">
+
+                    💡 Security Tips
+
+                </div>
+
+                <div class="card-body">
+
+                    ✔ Never share your encryption key.
+
+                    <hr>
+
+                    ✔ AES-256 provides enterprise-grade security.
+
+                    <hr>
+
+                    ✔ Store encrypted messages safely.
+
+                    <hr>
+
+                    ✔ Verify the recipient before sharing encrypted data.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% if encryption %}
+
+<div class="card shadow-lg mt-4 border-success">
+
+    <div class="card-header bg-success text-white">
+
+        <h3>
+
+            🔒 Encryption Result
+
+        </h3>
+
+    </div>
+
+    <div class="card-body">
+
+        <!-- Statistics -->
+
+        <div class="row text-center">
+
+            <div class="col-md-3">
+
+                <div class="alert alert-primary">
+
+                    <strong>Algorithm</strong>
+
+                    <br>
+
+                    {{ encryption.algorithm }}
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="alert alert-success">
+
+                    <strong>Security</strong>
+
+                    <br>
+
+                    {{ encryption.security }}
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="alert alert-warning">
+
+                    <strong>Time</strong>
+
+                    <br>
+
+                    {{ encryption.time_taken }} sec
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="alert alert-info">
+
+                    <strong>Key</strong>
+
+                    <br>
+
+                    {{ encryption.key_size }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="card text-center">
+
+                    <div class="card-body">
+
+                        <h6>
+
+                            Original Size
+
+                        </h6>
+
+                        <h4>
+
+                            {{ encryption.original_size }}
+
+                        </h4>
+
+                        <small>
+
+                            Bytes
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card text-center">
+
+                    <div class="card-body">
+
+                        <h6>
+
+                            Encrypted Size
+
+                        </h6>
+
+                        <h4>
+
+                            {{ encryption.encrypted_size }}
+
+                        </h4>
+
+                        <small>
+
+                            Bytes
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card text-center">
+
+                    <div class="card-body">
+
+                        <h6>
+
+                            Generated On
+
+                        </h6>
+
+                        <small>
+
+                            {{ encryption.timestamp }}
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <label class="fw-bold">
+
+            🔒 Encrypted Ciphertext
+
+        </label>
+
+        <textarea
+            id="encryptedText"
+            class="form-control"
+            rows="7"
+            readonly>{{ encryption.ciphertext }}</textarea>
+
+        <div class="mt-4">
+
+            <button
+                class="btn btn-primary"
+                onclick="copyEncrypted()">
+
+                📋 Copy
+
+            </button>
+
+            <button
+                class="btn btn-success"
+                onclick="downloadEncrypted()">
+
+                ⬇ Download
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+<script>
+
+const textarea=document.getElementById("message");
+
+if(textarea){
+
+textarea.addEventListener("input",function(){
+
+document.getElementById("charCount").innerHTML=
+"Characters : "+this.value.length;
+
+let words=this.value.trim().split(/\s+/);
+
+document.getElementById("wordCount").innerHTML=
+"Words : "+(this.value.trim()==""?0:words.length);
+
+});
+
+}
+
+function copyEncrypted(){
+
+navigator.clipboard.writeText(
+
+document.getElementById("encryptedText").value
+
+);
+
+alert("Encrypted text copied successfully.");
+
+}
+
+function downloadEncrypted(){
+
+let text=document.getElementById("encryptedText").value;
+
+let blob=new Blob([text],{type:"text/plain"});
+
+let a=document.createElement("a");
+
+a.href=URL.createObjectURL(blob);
+
+a.download="Encrypted_Message.txt";
+
+a.click();
+
+}
+
+</script>
+
+{% endblock %}

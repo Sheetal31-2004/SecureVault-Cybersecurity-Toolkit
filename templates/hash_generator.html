@@ -1,0 +1,326 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+<div class="row">
+
+<!-- LEFT PANEL -->
+
+<div class="col-lg-8">
+
+<div class="card shadow-lg border-0">
+
+<div class="card-header bg-primary text-white">
+
+<h2>🔑 Hash Generator</h2>
+
+<small>Generate cryptographic hashes for files</small>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST" enctype="multipart/form-data">
+
+<div class="mb-4">
+
+<label class="form-label fw-bold">
+
+Select File
+
+</label>
+
+<input
+type="file"
+class="form-control"
+id="file"
+name="file"
+required>
+
+</div>
+
+<div class="row mb-4">
+
+<div class="col-md-6">
+
+<div class="form-check">
+
+<input
+class="form-check-input"
+type="checkbox"
+name="algorithms"
+value="md5"
+checked>
+
+<label class="form-check-label">
+
+MD5
+
+</label>
+
+</div>
+
+<div class="form-check">
+
+<input
+class="form-check-input"
+type="checkbox"
+name="algorithms"
+value="sha1"
+checked>
+
+<label>
+
+SHA-1
+
+</label>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="form-check">
+
+<input
+class="form-check-input"
+type="checkbox"
+name="algorithms"
+value="sha256"
+checked>
+
+<label>
+
+SHA-256
+
+</label>
+
+</div>
+
+<div class="form-check">
+
+<input
+class="form-check-input"
+type="checkbox"
+name="algorithms"
+value="sha512"
+checked>
+
+<label>
+
+SHA-512
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+<button
+class="btn btn-success w-100">
+
+⚡ Generate Hashes
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT PANEL -->
+
+<div class="col-lg-4">
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-dark text-white">
+
+Hash Information
+
+</div>
+
+<div class="card-body">
+
+<table class="table">
+
+<tr>
+
+<th>Purpose</th>
+
+<td>Integrity</td>
+
+</tr>
+
+<tr>
+
+<th>Algorithms</th>
+
+<td>4</td>
+
+</tr>
+
+<tr>
+
+<th>Security</th>
+
+<td>
+
+<span class="badge bg-success">
+
+HIGH
+
+</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>Collision Resistant</th>
+
+<td>SHA-256 / SHA-512</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="card shadow mt-4">
+
+<div class="card-header bg-warning">
+
+💡 Tips
+
+</div>
+
+<div class="card-body">
+
+✔ Compare hashes after download.
+
+<hr>
+
+✔ SHA-256 is recommended.
+
+<hr>
+
+✔ MD5 should not be used for security.
+
+<hr>
+
+✔ Store original hashes securely.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% if hashes %}
+
+<div class="card shadow-lg mt-4">
+
+<div class="card-header bg-success text-white">
+
+Generated Hashes
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered">
+
+<thead>
+
+<tr>
+
+<th>Algorithm</th>
+
+<th>Hash Value</th>
+
+<th>Copy</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for algo, value in hashes.items() %}
+
+<tr>
+
+<td>
+
+<strong>{{ algo.upper() }}</strong>
+
+</td>
+
+<td>
+
+<input
+class="form-control"
+id="{{ algo }}"
+value="{{ value }}"
+readonly>
+
+</td>
+
+<td>
+
+<button
+type="button"
+class="btn btn-primary btn-sm"
+onclick="copyHash('{{ algo }}')">
+
+📋 Copy
+
+</button>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<script>
+
+function copyHash(id){
+
+let box=document.getElementById(id);
+
+navigator.clipboard.writeText(box.value);
+
+alert(id.toUpperCase()+" copied.");
+
+}
+
+</script>
+
+{% endblock %}

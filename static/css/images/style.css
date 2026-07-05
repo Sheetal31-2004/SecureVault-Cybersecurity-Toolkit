@@ -1,0 +1,78 @@
+body{
+
+    background-image:url("{{ url_for('static', filename='css/images/login_bg.png') }}");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+}
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(7,10,30,0.55);
+
+    z-index:-1;
+
+}
+
+.cardbox{
+    background: rgba(32, 38, 70, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    padding:20px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.35);
+
+    overflow:hidden;
+
+    transition:0.3s ease;
+}
+
+.cardbox:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(123,97,255,0.25);
+
+}
+
+.network-img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.open-btn{
+    padding:10px 28px;
+    border-radius:12px;
+    font-weight:600;
+    min-width:120px;
+    transition:0.3s ease;
+}
+
+.open-btn:hover{
+    transform:translateY(-2px);
+}

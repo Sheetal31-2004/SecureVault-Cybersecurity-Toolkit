@@ -1,0 +1,217 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+    <!-- Header -->
+
+    <div class="cardbox mb-4 text-center">
+
+        <h2 class="fw-bold">
+            📁 File Scanner Center
+        </h2>
+
+        <p style="color:#d8d8d8;">
+            Scan files for vulnerabilities, malware, generate hashes and verify file integrity using enterprise-grade security tools.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- File Scan -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:70px;">📄</div>
+
+                    <h2 class="mt-3 fw-bold">
+                        File Scan
+                    </h2>
+
+                    <p style="color:#d8d8d8;">
+                        Upload files and perform vulnerability analysis.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled fs-5">
+
+                    <li>✔ File Analysis</li>
+
+                    <li>✔ Vulnerability Detection</li>
+
+                    <li>✔ Detailed Security Report</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('file_scanner_route') }}"
+                    class="btn btn-primary open-btn">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Malware Check -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:70px;">🦠</div>
+
+                    <h2 class="mt-3 fw-bold">
+                        Malware Check
+                    </h2>
+
+                    <p style="color:#d8d8d8;">
+                        Detect malicious files using signature analysis.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled fs-5">
+
+                    <li>✔ Malware Detection</li>
+
+                    <li>✔ Threat Classification</li>
+
+                    <li>✔ Detailed Results</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('file_scanner_route') }}"
+                    class="btn btn-primary open-btn">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Hash Generator -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:70px;">🔑</div>
+
+                    <h2 class="mt-3 fw-bold">
+                        Hash Generator
+                    </h2>
+
+                    <p style="color:#d8d8d8;">
+                        Generate secure cryptographic hashes for integrity verification.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled fs-5">
+
+                    <li>✔ MD5</li>
+
+                    <li>✔ SHA-1</li>
+
+                    <li>✔ SHA-256</li>
+
+                    <li>✔ SHA-512</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('file_scanner_route') }}"
+                    class="btn btn-primary open-btn">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- File Integrity Check -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:70px;">🛡️</div>
+
+                    <h2 class="mt-3 fw-bold">
+                        File Integrity Check
+                    </h2>
+
+                    <p style="color:#d8d8d8;">
+                        Verify that files have not been modified or tampered with.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled fs-5">
+
+                    <li>✔ Integrity Verification</li>
+
+                    <li>✔ Hash Comparison</li>
+
+                    <li>✔ Tamper Detection</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('file_scanner_route') }}"
+                    class="btn btn-primary open-btn">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

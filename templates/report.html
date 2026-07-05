@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="cardbox">
+
+<h2>📄 Security Reports</h2>
+
+<hr>
+
+<p>
+Generate network security scan reports.
+</p>
+
+<form method="POST" action="/report">
+
+<div class="mb-3">
+
+<label class="form-label">
+Target IP / Domain
+</label>
+
+<input
+type="text"
+name="report_target"
+class="form-control"
+placeholder="example.com or 127.0.0.1"
+required>
+
+</div>
+
+<button class="btn btn-danger">
+
+Generate Report
+
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

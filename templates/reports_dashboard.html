@@ -1,0 +1,207 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+
+    <!-- Header -->
+
+    <div class="cardbox mb-4 text-center">
+
+        <h2 class="fw-bold">
+            📊 Reports Center
+        </h2>
+
+        <p style="color:#d8d8d8;">
+            Generate, analyze and manage security reports and audit logs.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Network Reports -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:60px;">🌐</div>
+
+                    <h3 class="mt-3">
+                        Network Reports
+                    </h3>
+
+                    <p style="color:#d8d8d8;">
+                        View and download network scan reports.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled">
+
+                    <li>✔ Port Scan Reports</li>
+                    <li>✔ Open Ports</li>
+                    <li>✔ Vulnerability Summary</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('network_reports') }}"
+                       class="btn btn-primary px-5">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- File Reports -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:60px;">📁</div>
+
+                    <h3 class="mt-3">
+                        File Reports
+                    </h3>
+
+                    <p style="color:#d8d8d8;">
+                        View malware scan and file integrity reports.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled">
+
+                    <li>✔ Malware Reports</li>
+                    <li>✔ File Integrity</li>
+                    <li>✔ Download PDF</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('file_reports') }}"
+                       class="btn btn-success px-5">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Encryption Reports -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:60px;">🔐</div>
+
+                    <h3 class="mt-3">
+                        Encryption Reports
+                    </h3>
+
+                    <p style="color:#d8d8d8;">
+                        Review encryption and decryption activity.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled">
+
+                    <li>✔ Encryption History</li>
+                    <li>✔ Decryption History</li>
+                    <li>✔ Key Usage</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('encryption_reports') }}"
+                       class="btn btn-warning px-5">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Audit Logs -->
+
+        <div class="col-lg-6">
+
+            <div class="cardbox h-100">
+
+                <div class="text-center">
+
+                    <div style="font-size:60px;">📋</div>
+
+                    <h3 class="mt-3">
+                        Audit Logs
+                    </h3>
+
+                    <p style="color:#d8d8d8;">
+                        View user activities and system audit logs.
+                    </p>
+
+                </div>
+
+                <hr>
+
+                <ul class="list-unstyled">
+
+                    <li>✔ Login Logs</li>
+                    <li>✔ User Activity</li>
+                    <li>✔ Export PDF</li>
+
+                </ul>
+
+                <div class="text-center mt-4">
+
+                    <a href="{{ url_for('audit_logs') }}"
+                       class="btn btn-danger px-5">
+
+                        Open
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
